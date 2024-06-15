@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        
+        body {
+            font-family:Tahoma;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: radial-gradient(#770909, #000000);
+            color: #ffffff;
+            text-align: center;
+        }
+
+        nav {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px black;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1.2em;
+            padding: 10px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff6347;
+        }
+
+        header {
+            padding: 100px 10% 60px; /* Adjusted for fixed nav */
+        }
+
+        .profile-photo {
+            display: block;
+            margin: 0 auto 20px auto;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            border: 5px solid #000000;
+            box-shadow: 0 0 10px black;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 20px 0 0 0;
+            color: #ffffff;
+        }
+
+        p {
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        .skills {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .skills img {
+            width: 50px;
+            height: 50px;
+            filter: drop-shadow(0 0 5px black);
+            transition: transform 0.3s, filter 0.3s;
+	    border-radius:5px;
+        }
+
+        .skills img:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 10px black);
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid #ffffff;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .project {
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px black;
+        }
+
+        .project h3 {
+            font-size: 1.5em;
+            color: #ffffff;
+        }
+
+        .project a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        .project a:hover {
+            text-decoration: underline;
+            color: #ffffff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #ffffff;
+        }
+
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-media a {
+            text-decoration: none;
+        }
+
+        .social-media img {
+            width: 40px;
+            height: 40px;
+            filter: drop-shadow(0 0 5px black);
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .social-media img:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 10px black);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form label {
+            margin-bottom: 5px;
+            text-align: left;
+            width: 100%;
+        }
+
+        form input, form textarea {
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            width: 80%;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            box-shadow: 0 0 10px black;
+        }
+
+        form button {
+            padding: 10px;
+            font-size: 1em;
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 80%;
+            box-shadow: 0 0 10px black;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        form button:hover {
+            background: #000000;
+            color: #ffffff;
+            box-shadow: 0 0 20px black;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px black;
+        }
+
+        table, th, td {
+            border: 1px solid #ffffff;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('nav ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Page -->
+    <header id="home">
+        <img src="C:\Users\grihi\OneDrive\Pictures\Grihith PP.jpg" alt="Profile Photo" class="profile-photo">
+        <h1>Welcome to My Portfolio</h1>
+        <p>Hi, I'm [Your Name], a passionate Web Developer with expertise in:</p>
+        <div class="skills">
+            <img src="C:\Users\grihi\OneDrive\Pictures\Saved Pictures\python logo.png" alt="Python">
+            <img src="C:\Users\grihi\OneDrive\Pictures\Saved Pictures\Js logo.jpg" alt="JavaScript">
+            <img src="C:\Users\grihi\OneDrive\Pictures\Saved Pictures\Html logo.jpg" alt="HTML">
+            <img src="C:\Users\grihi\OneDrive\Pictures\Saved Pictures\Css logo.jpg" alt="CSS">
+            </div>
+    </header>
+    
+    <!-- About Me Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>Hey there, reader! I'm Grihith, a freshman in Computer Science, driven by an insatiable curiosity for all things tech. With a fervent belief in the transformative power of startups, I'm actively shaping the digital landscape as a Linkedin Growth Architect, crafting profiles that magnetize waves of followers. My coding journey ignited during the lockdown, becoming a passion that illuminates my path forward. Currently, I'm delving into various domains, eager to uncover my true passion and make a meaningful impact. I'm interested in domains such as:<br>
+◇Web 3.0<br>
+◇Augmented Reality and Virtual Reality<br>
+
+◇Artificial Intelligence<br>
+
+◇Digital Marketing<br>
+
+◇ UI/UX & Graphic Design<br>
+
+◇ Full Stack Development</p>
+            <h3>Education</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Level</th>
+                        <th>Institution</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>B.Tech</td>
+                        <td>ITM University</td>
+                        <td>9 CGPA</td>
+                    </tr>
+                    <tr>
+                        <td>Intermediate</td>
+                        <td>Narayana Junior College</td>
+                        <td>91.2%</td>
+                    </tr>
+                    <tr>
+                        <td>10th Grade</td>
+                        <td>Narayana Concept School</td>
+                        <td>92%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Professional Experience</h3>
+            <p>I have accumulated 6 months of hands-on experience as a freelance web developer. During this period, I worked on a variety of projects, presenting my skills in front-end and back-end development. I collaborated with clients to create responsive and user-friendly websites, ensuring seamless user experiences across different devices and browsers. My responsibilities included designing and implementing web interfaces using HTML, CSS, and JavaScript, as well as developing server-side logic with Python and Java. I also worked with databases to manage and retrieve data efficiently. This experience not only enhanced my technical skills but also improved my project management and client communication abilities, enabling me to deliver high-quality projects within deadlines.</p>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project">
+                <h3>Project 1</h3>
+                <img src="C:\Users\grihi\OneDrive\Pictures\Saved Pictures\whatsapp.png" height="220" width="440">
+                <p>Whatsapp clone website</p>
+            </div>
+            <div class="project">
+                <h3>Project 2</h3>
+                <img src="C:\Users\grihi\OneDrive\Pictures\Saved Pictures\Netflix.png" height="220" width="440">
+                <p>Netflix clone website</a>
+            </div>
+            <!-- Add more projects as needed -->
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                
+                <button type="submit">Send</button>
+            </form>
+                    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Grihith. All rights reserved.</p>
+    </footer>
+</body>
+</html>
